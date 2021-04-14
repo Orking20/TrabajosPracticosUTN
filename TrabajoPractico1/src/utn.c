@@ -17,12 +17,12 @@ static int esDecimal(char* cadena);
 static int myGets(char* cadena, int longitud);
 
 /**
- * \brief Le pide al usuario un número entero entre un rango con reintentos
- * \param pNumero: El número ingresado por el usuario
- * \param pTexto: Texto para que el usuario sepa que ingresar
- * \param mensajeError: Texto que nos indica que hubo algún tipo de error
- * \param min: El rango mínimo para ingresar un número
- * \param max: El rango máximo para ingresar un número
+ * \brief Le pide al usuario un número entero entre un rango
+ * \param int* pNumero: Puntero donde se almacena el número ingresado por el usuario
+ * \param const char* pTexto: Texto para que el usuario sepa que ingresar
+ * \param const char* mensajeError: Texto que nos indica que hubo un error
+ * \param int min: El rango mínimo para ingresar un número
+ * \param int max: El rango máximo para ingresar un número
  * \return Retorna 0 (EXITO) si se obtiene un número entre el rango o -1 (ERROR) si no*/
 int utn_getNumero(int* pNumero, const char* pTexto, const char* mensajeError, int min, int max)
 {
@@ -53,12 +53,11 @@ int utn_getNumero(int* pNumero, const char* pTexto, const char* mensajeError, in
 }
 
 /**
- * \brief Le pide al usuario un número con decimal entre un rango con reintentos
- * \param pNumero: El número ingresado por el usuario
- * \param pTexto: Texto para que el usuario sepa que ingresar
- * \param sError: Texto que nos tira un error si ingresamos letra en vez de números
- * \param fueraDeRango: Texto que nos indica si el usuario ingresó un número fuera de rango
- * \return Retorna 0 (EXITO) si se obtiene un número decimal entre el rango o -1 (ERROR) si no*/
+ * \brief Le pide al usuario un número racional
+ * \param float* pNumero: Puntero donde se almacena el número ingresado por el usuario
+ * \param const char* pTexto: Texto para que el usuario sepa que ingresar
+ * \param const char* sError: Texto que nos indica que hubo un error
+ * \return Retorna 0 (EXITO) si se obtiene un número racional o -1 (ERROR) si no*/
 float utn_getFloat(float* pNumero, const char* pTexto, const char* mensajeError)
 {
 	int retorno = -1;
@@ -87,10 +86,10 @@ float utn_getFloat(float* pNumero, const char* pTexto, const char* mensajeError)
 }
 
 /**
- * \brief Manda a verificar la cadena y si sale todo bien la transforma en un número
- * \param pResultado: Puntero donde se almacenará el número ingresado
+ * \brief Transforma una cadena de caractéres a números si es posible
+ * \param int* pResultado: Puntero donde se almacenará el número ingresado
  * \return Retorna 0 (EXITO) si se obtiene un número entero o -1 (ERROR) si no*/
-static int getInt(int *pResultado)
+static int getInt(int* pResultado)
 {
 	int retorno = -1;
 	char buffer[64];
@@ -108,10 +107,10 @@ static int getInt(int *pResultado)
 }
 
 /**
- * \brief Manda a verificar la cadena y si sale todo bien la transforma en un número decimal
- * \param pResultado: Puntero donde se almacenará el número ingresado
+ * \brief Transforma una cadena de caractéres a números decimales si es posible
+ * \param float* pResultado: Puntero donde se almacenará el número ingresado
  * \return Retorna 0 (EXITO) si se obtiene un número decimal o -1 (ERROR) si no*/
-static int getFloat(float *pResultado)
+static int getFloat(float* pResultado)
 {
 	int retorno = -1;
 	char buffer[64];
@@ -129,8 +128,8 @@ static int getFloat(float *pResultado)
 }
 
 /**
- * \brief Verifica que la cadena recibida solo contenga números positivos o negativos
- * \param cadena: Cadena de caracteres a ser analizada
+ * \brief Verifica que la cadena recibida contenga solamente números positivos o negativos
+ * \param char* cadena: Cadena de caracteres a ser analizada
  * \return Retorna 1 (verdadero) si la cadena es numérica, 0 (falso) si no o -1 si hubo algún error con los argumentos*/
 static int esNumerica(char* cadena)
 {
@@ -157,8 +156,8 @@ static int esNumerica(char* cadena)
 }
 
 /**
- * \brief Verifica que la cadena recibida solo contenga números decimales positivos o negativos
- * \param cadena: Cadena de caracteres a ser analizada
+ * \brief Verifica que la cadena recibida contenga solamente números decimales positivos o negativos
+ * \param char* cadena: Cadena de caracteres a ser analizada
  * \return Retorna 1 (verdadero) si la cadena es decimal, 0 (falso) si no o -1 si hubo algún error con los argumentos*/
 static int esDecimal(char* cadena)
 {
@@ -191,8 +190,8 @@ static int esDecimal(char* cadena)
 
 /**
 * \brief Verifica que en la cadena no quede un enter
-* \param pResultado: Puntero al espacio de memoria donde se copiará la cadena obtenida
-* \param longitud: Define el tamaño de cadena
+* \param char* cadena: Puntero al espacio de memoria donde se copiará la cadena obtenida
+* \param longitud: Define el tamaño de la cadena
 * \return Retorna 0 (EXITO) si se obtiene una cadena y -1 (ERROR) si no
 */
 static int myGets(char* cadena, int longitud)
@@ -214,9 +213,9 @@ static int myGets(char* cadena, int longitud)
 
 /**
  * \brief Suma dos números y por medio de un puntero devuelve el resultado
- * \param numeroA: Primer número de la operación
- * \param numeroB: Segundo número de la operación
- * \param pResultado: El resultado de la suma, que va a llegar al main mediante un puntero
+ * \param float numeroA: Primer número de la operación
+ * \param float numeroB: Segundo número de la operación
+ * \param float* pResultado: El resultado de la suma, que va a llegar al main mediante un puntero
  * \return Retorna 0 (EXITO) si se pudo completar la suma o -1 (ERROR) si no*/
 int utn_sumar(float numeroA, float numeroB, float* pResultado)
 {
@@ -235,9 +234,9 @@ int utn_sumar(float numeroA, float numeroB, float* pResultado)
 
 /**
  * \brief Resta dos números y por medio de un puntero devuelve el resultado
- * \param numeroA: Primer número de la operación
- * \param numeroB: Segundo número de la operación
- * \param pResultado: El resultado de la resta, que va a llegar al main mediante un puntero
+ * \param float numeroA: Primer número de la operación
+ * \param float numeroB: Segundo número de la operación
+ * \param float* pResultado: El resultado de la resta, que va a llegar al main mediante un puntero
  * \return Retorna 0 (EXITO) si se pudo completar la resta o -1 (ERROR) si no*/
 int utn_restar(float numeroA, float numeroB, float* pResultado)
 {
@@ -256,10 +255,10 @@ int utn_restar(float numeroA, float numeroB, float* pResultado)
 
 /**
  * \brief Divide dos números y por medio de un puntero devuelve el resultado
- * \param numeroA: Primer número de la operación
- * \param numeroB: Segundo número de la operación
- * \param pResultado: El resultado de la división, que va a llegar al main mediante un puntero
- * \param pDivisionPorCero: Mensaje de error si el divisor es cero
+ * \param float numeroA: Primer número de la operación
+ * \param float numeroB: Segundo número de la operación
+ * \param float* pResultado: El resultado de la división, que va a llegar al main mediante un puntero
+ * \param const char* pDivisionPorCero: Mensaje de error si el divisor es cero
  * \return Retorna 0 (EXITO) si se pudo completar la division o -1 (ERROR) si no o si el divisor es 0*/
 int utn_dividir(float dividendo, float divisor, float* pResultado, const char* pDivisionPorCero)
 {
@@ -285,10 +284,9 @@ int utn_dividir(float dividendo, float divisor, float* pResultado, const char* p
 
 /**
  * \brief Multiplica dos números y por medio de un puntero devuelve el resultado
- * \param numeroA: Primer número de la operación
- * \param numeroB: Segundo número de la operación
- * \param pResultado: El resultado de la multiplicación, que va a llegar al main mediante un puntero
- *
+ * \param float numeroA: Primer número de la operación
+ * \param float numeroB: Segundo número de la operación
+ * \param float* pResultado: El resultado de la multiplicación, que va a llegar al main mediante un puntero
  * \return Retorna 0 (EXITO) si se pudo completar la multiplicación o -1 (ERROR) si no*/
 int utn_multiplicar(float dividendo, float divisor, float* pResultado)
 {
@@ -307,8 +305,8 @@ int utn_multiplicar(float dividendo, float divisor, float* pResultado)
 
 /**
  * \brief Factorisa un número ingresado y lo devuelve mediante un puntero
- * \param numero: Número a ser factoriado
- * \param pResultado: El resultado de la factorización, que va a llegar al main mediante un puntero
+ * \param float numero: Número a ser factoriado
+ * \param float* pResultado: El resultado de la factorización, que va a llegar al main mediante un puntero
  * \return Retorna 0 (EXITO) si se pudo completar la factorisación o -1 (ERROR) si no*/
 int utn_factorial(float numero, float* pResultado)
 {
