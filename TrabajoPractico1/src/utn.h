@@ -11,6 +11,8 @@
 int utn_getNumero(int* pNumero, const char* pTexto, const char* mensajeError, int min, int max);
 int utn_getFloat(float* pNumero, const char* pTexto, const char* mensajeError);
 
+int menu(int* pOpcionMenu, float* pNumeroA, float* pNumeroB, int* pFlagPrimeraVez);
+
 int utn_sumar(float numeroA, float numeroB, float* pResultado);
 int utn_restar(float numeroA, float numeroB, float* pResultado);
 int utn_dividir(float dividendo, float divisor, float* pResultado, const char* pDivisionPorCero);

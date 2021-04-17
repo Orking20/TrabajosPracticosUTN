@@ -192,7 +192,7 @@ static int esDecimal(char* cadena)
 * \brief Verifica que en la cadena no quede un enter
 * \param char* cadena: Puntero al espacio de memoria donde se copiará la cadena obtenida
 * \param longitud: Define el tamaño de la cadena
-* \return Retorna 0 (EXITO) si se obtiene una cadena y -1 (ERROR) si no
+* \return Retorna 0 (EXITO) si se obtiene una cadena o -1 (ERROR) si no
 */
 static int myGets(char* cadena, int longitud)
 {
@@ -205,6 +205,66 @@ static int myGets(char* cadena, int longitud)
 		{
 			cadena[strlen(cadena) - 1] = '\0';
 		}
+		retorno = 0;
+	}
+
+	return retorno;
+}
+
+/**
+ * \brief Muestra un menú de opciones y le da al usuario la oprtunidad de elegir una de las opciones
+ * \param int* pOpcionMenu: Puntero donde se almacenará la opción elegida por el usuario
+ * \param float* pNumeroA: Puntero donde se almacenará el primer operando
+ * \param float* pNumeroB: Puntero donde se almacenará el segundo operando
+ * \param int* pFlagPrimeraVez: Puntero que se encarga de mostrar un menú sin números ingresados hasta que el usuario ingrese uno
+ * \return Retorna 0 (EXITO) o -1 (ERROR) si hay algún error con los argumentos*/
+int menu(int* pOpcionMenu, float* pNumeroA, float* pNumeroB, int* pFlagPrimeraVez)
+{
+	int retorno = -1;
+	int opcionMenu;
+
+	if(pOpcionMenu != NULL && pNumeroA != NULL && pNumeroB != NULL && pFlagPrimeraVez != NULL)
+	{
+		if(*pFlagPrimeraVez == 0)
+		{
+			printf("\n\n1) Ingresar 1er operando");
+			printf("\n2) Ingresar 2do operando");
+			printf("\n3) Calcular la suma (%0.2f + %0.2f)", *pNumeroA, *pNumeroB);
+			printf("\n4) Calcular la resta (%0.2f - %0.2f)", *pNumeroA, *pNumeroB);
+			printf("\n5) Calcular la división (%0.2f / %0.2f)", *pNumeroA, *pNumeroB);
+			printf("\n6) Calcular la multiplicación (%0.2f * %0.2f)", *pNumeroA, *pNumeroB);
+			printf("\n7) Calcular el factorial (%0.2f!) (%0.2f!)", *pNumeroA, *pNumeroB);
+			printf("\n8) Calcular todas las operaciones");
+			printf("\n9) Salir\n");
+		}
+		else
+		{
+			printf("\n\n1) Ingresar 1er operando");
+			printf("\n2) Ingresar 2do operando");
+			printf("\n3) Calcular la suma (A + B)");
+			printf("\n4) Calcular la resta (A - B)");
+			printf("\n5) Calcular la división (A / B)");
+			printf("\n6) Calcular la multiplicación (A * B)");
+			printf("\n7) Calcular el factorial (A!) (B!)");
+			printf("\n8) Calcular todas las operaciones");
+			printf("\n9) Salir\n");
+		}
+
+		utn_getNumero(&opcionMenu, "\nIngrese una opción del menú: ", "Hubo un error! Debe ingresar un número según las opciones del menú\n", 1, 9);
+
+		if(*pFlagPrimeraVez == 1)
+		{
+			if(opcionMenu == 1 || opcionMenu == 2 || opcionMenu == 9)
+			{
+				*pFlagPrimeraVez = 0;
+			}
+			else
+			{
+				printf("Error. Todavía no ingreso ningún operando.\n");
+			}
+		}
+
+		*pOpcionMenu = opcionMenu;
 		retorno = 0;
 	}
 
