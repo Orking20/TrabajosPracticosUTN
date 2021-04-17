@@ -58,7 +58,7 @@ int utn_getNumero(int* pNumero, const char* pTexto, const char* mensajeError, in
  * \param const char* pTexto: Texto para que el usuario sepa que ingresar
  * \param const char* sError: Texto que nos indica que hubo un error
  * \return Retorna 0 (EXITO) si se obtiene un número racional o -1 (ERROR) si no*/
-float utn_getFloat(float* pNumero, const char* pTexto, const char* mensajeError)
+int utn_getFloat(float* pNumero, const char* pTexto, const char* mensajeError)
 {
 	int retorno = -1;
 	float bufferFloat;

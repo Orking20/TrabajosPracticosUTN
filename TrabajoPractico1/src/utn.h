@@ -9,7 +9,7 @@
 #define UTN_H_
 
 int utn_getNumero(int* pNumero, const char* pTexto, const char* mensajeError, int min, int max);
-float utn_getFloat(float* pNumero, const char* pTexto, const char* mensajeError);
+int utn_getFloat(float* pNumero, const char* pTexto, const char* mensajeError);
 
 int utn_sumar(float numeroA, float numeroB, float* pResultado);
 int utn_restar(float numeroA, float numeroB, float* pResultado);
