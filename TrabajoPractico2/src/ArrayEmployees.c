@@ -9,7 +9,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include "utn.h"
-#include "Employee.h"
+#include "ArrayEmployees.h"
 
 /**
  * brief Initialize the value of all the employees to empty values
@@ -84,7 +84,7 @@ int updateEmployees(Employee* pEmployee, int length)
 	{
 		if(findEmployee(pEmployee, length) == 1)
 		{
-			showEmployeesWithId(pEmployee, length);
+			printEmployeesWithId(pEmployee, length);
 			if(!utn_getNumero(&idEmployee, "\nPlease enter the ID of the Employee to modified\n", "\nError. That ID not exist\n", 1, length, 3))
 			{
 				for(int i = 0; i < length; i++)
@@ -156,7 +156,7 @@ int removeEmployee(Employee* pEmployee, int length)
 	{
 		if(findEmployee(pEmployee, length) == 1)
 		{
-			showEmployeesWithId(pEmployee, length);
+			printEmployeesWithId(pEmployee, length);
 			if(!utn_getNumero(&idEmployee, "\nPlease enter the ID of the employee to remove\n", "\nError. That Id is not exist\n", 1, length, 3))
 			{
 				for(int i = 0; i < length; i++)
@@ -193,11 +193,13 @@ int printEmployees(Employee* pEmployee, int length)
 
 	if(pEmployee != NULL && length > 0)
 	{
+		printf("Name\t\tLast name\t\tSalary\t\tSector\t\t\n-----------------------------------------------------------------");
 		for(int i = 0; i < length; i++)
 		{
 			if(!pEmployee[i].isEmpty)
 			{
-				printf("Name: %-15s Last name: %-20s Salary: %-10.2f Sector: %-10d\n", pEmployee[i].name, pEmployee[i].lastName, pEmployee[i].salary, pEmployee[i].sector);
+				printf("\n%-15s %-23s %-18.2f %-15d", pEmployee[i].name, pEmployee[i].lastName, pEmployee[i].salary, pEmployee[i].sector);
+				//printf("Name: %-15s Last name: %-20s Salary: %-10.2f Sector: %-10d\n", pEmployee[i].name, pEmployee[i].lastName, pEmployee[i].salary, pEmployee[i].sector);
 			}
 		}
 		answer = 0;
@@ -211,17 +213,18 @@ int printEmployees(Employee* pEmployee, int length)
  * \param Employee* pEmployee: Array that contains all the employees and will be objective of the function
  * \param int length: Length of the array pEmployee
  * \return 0 (SUCCESS) or -1 (ERROR)*/
-int showEmployeesWithId(Employee* pEmployee, int length)
+int printEmployeesWithId(Employee* pEmployee, int length)
 {
 	int answer = -1;
 
 	if(pEmployee != NULL && length > 0)
 	{
+		printf("ID\tName\t\tLast name\t\tSalary\t\tSector\t\t\n-------------------------------------------------------------------------");
 		for(int i = 0; i < length; i++)
 		{
 			if(!pEmployee[i].isEmpty)
 			{
-				printf("ID: %-10d Name: %-15s Last name: %-20s Salary: %-10.2f Sector: %-10d\n", pEmployee[i].id, pEmployee[i].name, pEmployee[i].lastName, pEmployee[i].salary, pEmployee[i].sector);
+				printf("\n%-7d %-15s %-23s %-18.2f %-15d\n", pEmployee[i].id, pEmployee[i].name, pEmployee[i].lastName, pEmployee[i].salary, pEmployee[i].sector);
 			}
 		}
 		answer = 0;

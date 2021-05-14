@@ -26,7 +26,7 @@ int updateEmployees(Employee* pEmployee, int length);
 int removeEmployee(Employee* pEmployee, int length);
 
 int printEmployees(Employee* pEmployee, int length);
-int showEmployeesWithId(Employee* pEmployee, int length);
+int printEmployeesWithId(Employee* pEmployee, int length);
 int findEmployeeIndexEmpty(Employee* pEmployee, int length);
 int findEmployeeById(Employee* pEmployee, int length, int id);
 int findEmployee(Employee* pEmployee, int length);

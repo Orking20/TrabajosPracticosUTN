@@ -8,7 +8,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include "utn.h"
-#include "Employee.h"
+#include "ArrayEmployees.h"
 #include "Reports.h"
 
 static int sortEmployeesByLastName(Employee* pEmployee, int length);
@@ -69,7 +69,7 @@ static int sortEmployeesByLastName(Employee* pEmployee, int length)
 			}
 		}while(flagSwap);
 
-		printf("\nList by last name:\n");
+		printf("\n\n\nLIST BY NAMES:\n");
 		printEmployees(pEmployee, length);
 		answer = 0;
 	}
@@ -105,7 +105,7 @@ static int sortEmployeesBySector(Employee* pEmployee, int length)
 			}
 		}while(flagSwap);
 
-		printf("\nList by sector:\n");
+		printf("\n\n\nLIST BY SECTOR:\n");
 		printEmployees(pEmployee, length);
 		answer = 0;
 	}
@@ -147,7 +147,7 @@ static int salaryInfo(Employee* pEmployee, int length)
 			}
 		}
 
-		printf("\nTotal salary: %.2f\nAverage salary: %.2f\nEmployees that exceed the average salary: %d", totalSalary, average, exceedAverage);
+		printf("\n\n\nTotal salary: %.2f\nAverage salary: %.2f\nEmployees that exceed the average salary: %d", totalSalary, average, exceedAverage);
 		retorno = 0;
 	}
 

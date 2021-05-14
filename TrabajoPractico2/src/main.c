@@ -11,7 +11,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "utn.h"
-#include "Employee.h"
+#include "ArrayEmployees.h"
 #include "Reports.h"
 #define QTY_EMPLOYEE 100
 
