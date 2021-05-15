@@ -52,7 +52,7 @@ int addEmployees(Employee* pEmployee, int index)
 		if(!utn_getNombre(bufferEmployee.name, "\nPlease enter the name: ", "Error. That name is invalid\n") &&
 		   !utn_getNombre(bufferEmployee.lastName, "Please enter the last name: ", "Error. That last name is invalid\n") &&
 		   !utn_getPrecio(&bufferEmployee.salary, "Please enter the salary: ", "Error. That salary is invalid\n") &&
-		   !utn_getNumero(&bufferEmployee.sector, "Please enter the sector: ", "Error. That sector is invalid\n", 1, 3, 2))
+		   !utn_getNumero(&bufferEmployee.sector, "Please enter the sector (1, 2 or 3): ", "Error. That sector is invalid. You can only write 1, 2 or 3\n", 1, 3, 2))
 		{
 			bufferEmployee.id = index + 1;
 			bufferEmployee.isEmpty = 0;
@@ -114,7 +114,7 @@ int updateEmployees(Employee* pEmployee, int length)
 							}
 							case 4:
 							{
-								utn_getNumero(&bufferEmployee.sector, "Please enter the new sector: ", "Error. That sector is invalid\n", 1, 3, 2);
+								utn_getNumero(&bufferEmployee.sector, "Please enter the new sector (1, 2 or 3): ", "Error. That sector is invalid. You can only write 1, 2 or 3\n", 1, 3, 2);
 								pEmployee[i].sector = bufferEmployee.sector;
 								break;
 							}

@@ -11,8 +11,8 @@
 #include "ArrayEmployees.h"
 #include "Reports.h"
 
-static int sortEmployeesByLastName(Employee* pEmployee, int length);
-static int sortEmployeesBySector(Employee* pEmployee, int length);
+static int sortEmployeesByLastName(Employee* pEmployee, int length, int* order);
+static int sortEmployeesBySector(Employee* pEmployee, int length, int* order);
 static int salaryInfo(Employee* pEmployee, int length);
 
 /*
@@ -23,13 +23,15 @@ static int salaryInfo(Employee* pEmployee, int length);
 int report(Employee* pEmployee, int length)
 {
 	int retorno = -1;
+	int order;
 
 	if(pEmployee != NULL && length > 0)
 	{
 		if(findEmployee(pEmployee, length) == 1)
 		{
-			sortEmployeesByLastName(pEmployee, length);
-			sortEmployeesBySector(pEmployee, length);
+			utn_getNumero(&order, "\nDo you want to sort them in ascending [1] or descending [0] order? ", "\nError. You can only put 1 or 0", 0, 1, 3);
+			sortEmployeesByLastName(pEmployee, length, &order);
+			sortEmployeesBySector(pEmployee, length, &order);
 			salaryInfo(pEmployee, length);
 		}
 		else
@@ -46,7 +48,7 @@ int report(Employee* pEmployee, int length)
  * \param Employee* pEmployee: Array where contains the values to sort
  * \param int length: Length of the array pEmployee
  * \return 0 (SUCCESS) if it could to sort the values or -1 (ERROR) if not*/
-static int sortEmployeesByLastName(Employee* pEmployee, int length)
+static int sortEmployeesByLastName(Employee* pEmployee, int length, int* order)
 {
 	int answer = -1;
 	int flagSwap = 0;
@@ -59,12 +61,30 @@ static int sortEmployeesByLastName(Employee* pEmployee, int length)
 			flagSwap = 0;
 			for(int i = 0; i < length - 1; i++)
 			{
-				if(strcmp(pEmployee[i].lastName, pEmployee[i + 1].lastName) > 0)
+				switch(*order)
 				{
-					auxiliar = pEmployee[i];
-					pEmployee[i] = pEmployee[i + 1];
-					pEmployee[i + 1] = auxiliar;
-					flagSwap = 1;
+					case 0:
+					{
+						if(strcmp(pEmployee[i].lastName, pEmployee[i + 1].lastName) < 0)
+						{
+							auxiliar = pEmployee[i];
+							pEmployee[i] = pEmployee[i + 1];
+							pEmployee[i + 1] = auxiliar;
+							flagSwap = 1;
+						}
+						break;
+					}
+					case 1:
+					{
+						if(strcmp(pEmployee[i].lastName, pEmployee[i + 1].lastName) > 0)
+						{
+							auxiliar = pEmployee[i];
+							pEmployee[i] = pEmployee[i + 1];
+							pEmployee[i + 1] = auxiliar;
+							flagSwap = 1;
+						}
+						break;
+					}
 				}
 			}
 		}while(flagSwap);
@@ -82,7 +102,7 @@ static int sortEmployeesByLastName(Employee* pEmployee, int length)
  * \param Employee* pEmployee: Array where contains the values to sort
  * \param int length: Length of the array pEmployee
  * \return 0 (SUCCESS) if it could to sort the values or -1 (ERROR) if not*/
-static int sortEmployeesBySector(Employee* pEmployee, int length)
+static int sortEmployeesBySector(Employee* pEmployee, int length, int* order)
 {
 	int answer = -1;
 	int flagSwap = 0;
@@ -95,12 +115,30 @@ static int sortEmployeesBySector(Employee* pEmployee, int length)
 			flagSwap = 0;
 			for(int i = 0; i < length - 1; i++)
 			{
-				if(pEmployee[i].sector > pEmployee[i + 1].sector)
+				switch(*order)
 				{
-					auxiliar = pEmployee[i];
-					pEmployee[i] = pEmployee[i + 1];
-					pEmployee[i + 1] = auxiliar;
-					flagSwap = 1;
+					case 0:
+					{
+						if(pEmployee[i].sector < pEmployee[i + 1].sector)
+						{
+							auxiliar = pEmployee[i];
+							pEmployee[i] = pEmployee[i + 1];
+							pEmployee[i + 1] = auxiliar;
+							flagSwap = 1;
+						}
+						break;
+					}
+					case 1:
+					{
+						if(pEmployee[i].sector > pEmployee[i + 1].sector)
+						{
+							auxiliar = pEmployee[i];
+							pEmployee[i] = pEmployee[i + 1];
+							pEmployee[i + 1] = auxiliar;
+							flagSwap = 1;
+						}
+						break;
+					}
 				}
 			}
 		}while(flagSwap);
