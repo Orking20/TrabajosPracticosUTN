@@ -56,7 +56,7 @@ int employee_delete(Employee* this)
 	return retorno;
 }
 
-//ID
+//----------------ID----------------
 
 void setearValorMaximoId(int id)
 {
@@ -80,7 +80,7 @@ int employee_setId(Employee* this, int id)
 {
 	int retorno = -1;
 
-	if(this != NULL && isValidId(id))
+	if(this != NULL && isValidId(id) == 1)
 	{
 		this->id = id;
 		retorno = 0;
@@ -98,7 +98,7 @@ int employee_setNombre(Employee* this, char* nombre)
 {
 	int retorno = -1;
 
-	if(this != NULL && isValidNombre(nombre))
+	if(this != NULL && isValidNombre(nombre) == 1)
 	{
 		strncpy(this->nombre, nombre, sizeof(this->nombre));
 		retorno = 0;
@@ -116,7 +116,7 @@ int employee_setHorasTrabajadas(Employee* this, int horasTrabajadas)
 {
 	int retorno  = -1;
 
-	if(this != NULL && isValidHorasTrabajadas(horasTrabajadas))
+	if(this != NULL && isValidHorasTrabajadas(horasTrabajadas) == 1)
 	{
 		this->horasTrabajadas = horasTrabajadas;
 		retorno  = 0;
@@ -134,7 +134,7 @@ int employee_setSueldo(Employee* this, int sueldo)
 {
 	int retorno = -1;
 
-	if(this != NULL && isValidSueldo(sueldo))
+	if(this != NULL && isValidSueldo(sueldo) == 1)
 	{
 		this->sueldo = sueldo;
 		retorno = 0;
@@ -172,15 +172,15 @@ int employee_getId(Employee* this, int* flagError)
 char* employee_getNombre(Employee* this, int* flagError)
 {
 	*flagError = -1;
-	char* auxnombre = NULL;
+	char* auxNombre;
 
 	if(this != NULL && flagError != NULL)
 	{
-		auxnombre = this->nombre;
+		auxNombre = this->nombre;
 		*flagError = 0;
 	}
 
-	return auxnombre;
+	return auxNombre;
 }
 
 /*
@@ -244,7 +244,7 @@ int isValidId(int id)
 }
 
 /*
- * brief Comprueba que la nombre sea válida
+ * brief Comprueba que el nombre sea válido
  * \param char* nombre El dato a comprobar que sea válido
  * \return Retora 1 si es válido, 0 si no es válido o -1 (ERROR)*/
 int isValidNombre(char* nombre)
@@ -254,13 +254,25 @@ int isValidNombre(char* nombre)
 	if(nombre != NULL)
 	{
 		retorno = 1;
+		for(int i = 0; nombre[i] != '\0'; i++)
+		{
+			if((i == 0 || nombre[i - 1] == ' ') && nombre[i] >= 'A' && nombre[i] <= 'Z')
+			{
+				continue;
+			}
+			if((nombre[i] < 'a' || nombre[i] > 'z') && nombre[i] != ' ')
+			{
+				retorno = 0;
+				break;
+			}
+		}
 	}
 
 	return retorno;
 }
 
 /*
- * brief Comprueba que la apellido sea válida
+ * brief Comprueba que las horas trabajadas sean sea válidas
  * \param int horasTrabajadas El dato a comprobar que sea válido
  * \return Retora 1 si es válido, 0 si no es válido o -1 (ERROR)*/
 int isValidHorasTrabajadas(int horasTrabajadas)

@@ -17,7 +17,7 @@ static int ordenarPorSueldo(void* elemento1, void* elemento2);
 /** \brief Carga los datos de los empleados desde el archivo data.csv (modo texto).
  *
  * \param path char* Dirección del archivo
- * \param pArrayListEmployee LinkedList* Listado de todos los empleados
+ * \param pArrayListEmployee LinkedList* Puntero a la lista
  * \return int Retorna 0 (EXITO) o -1 (ERROR)
  *
  */
@@ -48,7 +48,7 @@ int controller_loadFromText(char* path , LinkedList* pArrayListEmployee)
 /** \brief Carga los datos de los empleados desde el archivo dataBinary.bin (modo binario).
  *
  * \param path char* Dirección del archivo
- * \param pArrayListEmployee LinkedList* Listado de todos los empleados
+ * \param pArrayListEmployee LinkedList* Puntero a la lista
  * \return int Retorna 0 (EXITO) o -1 (ERROR)
  *
  */
@@ -78,7 +78,7 @@ int controller_loadFromBinary(char* path , LinkedList* pArrayListEmployee)
 
 /** \brief Alta de empleados
  *
- * \param pArrayListEmployee LinkedList* Listado de todos los empleados
+ * \param pArrayListEmployee LinkedList* Puntero a la lista
  * \return int Retorna 0 (EXITO) o -1 (ERROR)
  *
  */
@@ -132,7 +132,7 @@ int controller_addEmployee(LinkedList* pArrayListEmployee)
 
 /** \brief Modificar datos de empleado
  *
- * \param pArrayListEmployee LinkedList* Listado de todos los empleados
+ * \param pArrayListEmployee LinkedList* Puntero a la lista
  * \return int Retorna 0 (EXITO) o -1 (ERROR)
  *
  */
@@ -182,7 +182,7 @@ int controller_editEmployee(LinkedList* pArrayListEmployee)
 
 /** \brief Baja de empleado
  *
- * \param pArrayListEmployee LinkedList* Listado de todos los empleados
+ * \param pArrayListEmployee LinkedList* Puntero a la lista
  * \return int Retorna 0 (EXITO) o -1 (ERROR)
  *
  */
@@ -232,7 +232,7 @@ int controller_removeEmployee(LinkedList* pArrayListEmployee)
 
 /** \brief Listar empleados
  *
- * \param pArrayListEmployee LinkedList* Listado de todos los empleados
+ * \param pArrayListEmployee LinkedList* Puntero a la lista
  * \return int Retora 0 (EXITO) o -1 (ERROR)
  *
  */
@@ -259,7 +259,7 @@ int controller_ListEmployee(LinkedList* pArrayListEmployee)
 
 /** \brief Ordenar empleados
  *
- * \param pArrayListEmployee LinkedList* Listado de todos los empleados
+ * \param pArrayListEmployee LinkedList* Puntero a la lista
  * \return int Retora 0 (EXITO) o -1 (ERROR)
  *
  */
@@ -318,7 +318,7 @@ int controller_sortEmployee(LinkedList* pArrayListEmployee)
 
 /** \brief Guarda los datos de los empleados en el archivo data.csv (modo texto).
  *
- * \param pArrayListEmployee LinkedList* Listado de todos los empleados
+ * \param pArrayListEmployee LinkedList* Puntero a la lista
  * \return int Retora 0 (EXITO) o -1 (ERROR)
  *
  */
@@ -349,7 +349,7 @@ int controller_saveAsText(char* path , LinkedList* pArrayListEmployee)
 
 /** \brief Guarda los datos de los empleados en el archivo data.csv (modo binario).
  *
- * \param pArrayListEmployee LinkedList* Listado de todos los empleados
+ * \param pArrayListEmployee LinkedList* Puntero a la lista
  * \return int Retora 0 (EXITO) o -1 (ERROR)
  *
  */
@@ -379,7 +379,7 @@ int controller_saveAsBinary(char* path , LinkedList* pArrayListEmployee)
 
 /** \brief Busca el ID máximo
  *
- * \param pArrayLinkedList LinkedList* Listado de todos los empleados
+ * \param pArrayLinkedList LinkedList* Puntero a la lista
  * \param idMaximo int*
  * \return Retora 0 (EXITO) o -1 (ERROR)
  *
@@ -417,7 +417,7 @@ static int buscarIdMaximo(LinkedList* pArrayLinkedList, int* idMaximo)
 
 /** brief Busca si hay Empleados cargados
 
- * \param pLinkedList LinkedList*  Listado de todos los empleados
+ * \param pLinkedList LinkedList* Puntero a la lista
  * \return Retora 1 si hay por lo menos un Empleado, 0 si no hay ninguno o -1 si hay un error
  *
  */
@@ -440,7 +440,7 @@ static int buscarEmpleado(LinkedList* pLinkedList)
 
 /** brief Busca la posición donde los IDs son iguales
  *
- * \param pLinkedList LinkedList* Lista de todos los empleados donde se compararan los IDs
+ * \param pLinkedList LinkedList* Puntero a la lista
  * \param id int ID que se va a comparar con todos los IDs de los empleados
  * \return Retora la posición donde los IDs son iguales o -1 (ERROR) si no hay IDs iguales
  *
@@ -469,7 +469,7 @@ static int buscarPorId(LinkedList* pLinkedList, int id)
 
 /** \brief Ordena los empleados por ID
  *
- * \param pArrayListEmployee LinkedList* Listado de todos los empleados
+ * \param pArrayListEmployee LinkedList* Puntero a la lista
  * \return int Retora 0 (EXITO) o -1 (ERROR)
  *
  */
@@ -505,7 +505,7 @@ static int ordenarPorId(void* elemento1, void* elemento2)
 
 /** \brief Ordena los empleados por nombre
  *
- * \param pArrayListEmployee LinkedList* Listado de todos los empleados
+ * \param pArrayListEmployee LinkedList* Puntero a la lista
  * \return int Retora 0 (EXITO) o -1 (ERROR)
  *
  */
@@ -541,7 +541,7 @@ static int ordenarPorNombre(void* elemento1, void* elemento2)
 
 /** \brief Ordena los empleados por horas trabajadas
  *
- * \param pArrayListEmployee LinkedList* Listado de todos los empleados
+ * \param pArrayListEmployee LinkedList* Puntero a la lista
  * \return int Retora 0 (EXITO) o -1 (ERROR)
  *
  */
@@ -577,7 +577,7 @@ static int ordenarPorHorasTrabajadas(void* elemento1, void* elemento2)
 
 /** \brief Ordena los empleados por sueldo
  *
- * \param pArrayListEmployee LinkedList* Listado de todos los empleados
+ * \param pArrayListEmployee LinkedList* Puntero a la lista
  * \return int Retora 0 (EXITO) o -1 (ERROR)
  *
  */
